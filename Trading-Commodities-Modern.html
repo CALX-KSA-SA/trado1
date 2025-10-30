@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تجارة السلع العالمية | حلول تجارية متكاملة</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #FF6B35;
+      --secondary: #004E89;
+      --accent: #FFD23F;
+      --dark: #1A1A2E;
+      --light: #F7F7F7;
+    }
+
+    body {
+      font-family: 'Cairo', sans-serif;
+      line-height: 1.6;
+      color: var(--dark);
+      background: #ffffff;
+      overflow-x: hidden;
+    }
+
+    /* Header & Hero */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #1A1A2E 0%, #16213E 100%);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(255, 107, 53, 0.3), transparent);
+      border-radius: 50%;
+      top: -150px;
+      right: -150px;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(0, 78, 137, 0.3), transparent);
+      border-radius: 50%;
+      bottom: -100px;
+      left: -100px;
+      animation: float 8s ease-in-out infinite reverse;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-30px) scale(1.1); }
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 1.5rem 5%;
+      background: rgba(26, 26, 46, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    nav .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: #ffffff;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo i {
+      color: var(--primary);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2.5rem;
+    }
+
+    nav ul li a {
+      color: rgba(255, 255, 255, 0.9);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+      position: relative;
+    }
+
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      right: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: width 0.3s;
+    }
+
+    nav ul li a:hover::after {
+      width: 100%;
+    }
+
+    nav ul li a:hover {
+      color: var(--primary);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      padding: 2rem;
+      max-width: 900px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 900;
+      color: #ffffff;
+      margin-bottom: 1.5rem;
+      line-height: 1.3;
+      text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+      max-width: 850px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      color: rgba(255, 255, 255, 0.85);
+      margin-bottom: 3rem;
+      line-height: 1.8;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 1.2rem 3rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.1rem;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), #FF8C42);
+      color: #ffffff;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(255, 107, 53, 0.4);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: #ffffff;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.6);
+      transform: translateY(-3px);
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 3rem;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: bounce 2s infinite;
+    }
+
+    .scroll-indicator i {
+      font-size: 2rem;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(15px); }
+    }
+
+    /* Commodities Section */
+    .commodities {
+      padding: 8rem 5%;
+      background: var(--light);
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 5rem;
+    }
+
+    .section-tag {
+      display: inline-block;
+      padding: 0.5rem 1.5rem;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: #ffffff;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .section-title {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 900;
+      color: var(--dark);
+      margin-bottom: 1rem;
+    }
+
+    .section-subtitle {
+      font-size: 1.3rem;
+      color: #666;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .commodity-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2.5rem;
+      margin-top: 4rem;
+    }
+
+    .commodity-card {
+      background: #ffffff;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+    }
+
+    .commodity-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    }
+
+    .commodity-image-wrapper {
+      height: 280px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .commodity-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s;
+    }
+
+    .commodity-card:hover .commodity-image-wrapper img {
+      transform: scale(1.1);
+    }
+
+    .commodity-icon {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: #ffffff;
+      box-shadow: 0 10px 30px rgba(255, 107, 53, 0.4);
+    }
+
+    .commodity-content {
+      padding: 2.5rem;
+    }
+
+    .commodity-title {
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--dark);
+      margin-bottom: 1rem;
+    }
+
+    .commodity-description {
+      color: #666;
+      margin-bottom: 2rem;
+      line-height: 1.8;
+      font-size: 1.05rem;
+    }
+
+    .commodity-features {
+      list-style: none;
+      margin-bottom: 2rem;
+    }
+
+    .commodity-features li {
+      padding: 0.75rem 0;
+      color: #555;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .commodity-features li:last-child {
+      border-bottom: none;
+    }
+
+    .commodity-features li i {
+      color: var(--primary);
+      font-size: 1.1rem;
+    }
+
+    .learn-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 700;
+      transition: gap 0.3s;
+    }
+
+    .learn-more:hover {
+      gap: 1rem;
+    }
+
+    /* Why Choose Us */
+    .why-choose {
+      padding: 8rem 5%;
+      background: linear-gradient(135deg, var(--secondary) 0%, #003366 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .why-choose::before {
+      content: '';
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(255, 210, 63, 0.1), transparent);
+      border-radius: 50%;
+      top: -200px;
+      left: -200px;
+    }
+
+    .why-choose .section-title,
+    .why-choose .section-subtitle {
+      color: #ffffff;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.5rem;
+      margin-top: 4rem;
+    }
+
+    .feature-card {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 3rem 2rem;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.4s;
+    }
+
+    .feature-card:hover {
+      background: rgba(255, 255, 255, 0.12);
+      transform: translateY(-5px);
+    }
+
+    .feature-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 2rem;
+      font-size: 2.5rem;
+      color: #ffffff;
+      box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+    }
+
+    .feature-card h3 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 1rem;
+    }
+
+    .feature-card p {
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.8;
+      font-size: 1.05rem;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      padding: 8rem 5%;
+      background: var(--light);
+      text-align: center;
+    }
+
+    .cta-box {
+      max-width: 900px;
+      margin: 0 auto;
+      background: linear-gradient(135deg, var(--primary) 0%, #FF8C42 100%);
+      padding: 5rem 3rem;
+      border-radius: 30px;
+      box-shadow: 0 20px 60px rgba(255, 107, 53, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-box::before {
+      content: '';
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      top: -100px;
+      right: -100px;
+    }
+
+    .cta-box h2 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 900;
+      color: #ffffff;
+      margin-bottom: 1.5rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta-box p {
+      font-size: 1.3rem;
+      color: rgba(255, 255, 255, 0.95);
+      margin-bottom: 3rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta-box .btn {
+      background: #ffffff;
+      color: var(--primary);
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta-box .btn:hover {
+      background: var(--dark);
+      color: #ffffff;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      padding: 4rem 5% 2rem;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .footer-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-section h3 {
+      color: #ffffff;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-section p,
+    .footer-section a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      line-height: 2;
+      transition: color 0.3s;
+    }
+
+    .footer-section a:hover {
+      color: var(--primary);
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .social-links a {
+      width: 45px;
+      height: 45px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      transition: all 0.3s;
+    }
+
+    .social-links a:hover {
+      background: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+      }
+
+      .commodity-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="container">
+      <a href="#" class="logo">
+        <i class="fas fa-globe"></i>
+        تجارة السلع
+      </a>
+      <ul>
+        <li><a href="#home">الرئيسية</a></li>
+        <li><a href="#commodities">المنتجات</a></li>
+        <li><a href="#why">لماذا نحن</a></li>
+        <li><a href="#contact">تواصل معنا</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1>شريكك الموثوق في <span>التجارة العالمية</span></h1>
+      <p>نوفر أجود السلع الأساسية من السكر والأرز والزيوت والوقود والمعادن بأفضل الأسعار العالمية</p>
+      <div class="cta-buttons">
+        <a href="#commodities" class="btn btn-primary">
+          استكشف منتجاتنا
+          <i class="fas fa-arrow-left"></i>
+        </a>
+        <a href="https://wa.me/966599343529" target="_blank" class="btn btn-secondary">
+          تواصل معنا
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <i class="fas fa-chevron-down"></i>
+    </div>
+  </section>
+
+  <!-- Commodities Section -->
+  <section class="commodities" id="commodities">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-tag">منتجاتنا</span>
+        <h2 class="section-title">السلع التي نتاجر بها</h2>
+        <p class="section-subtitle">مجموعة متنوعة من السلع الأساسية عالية الجودة من مصادر موثوقة حول العالم</p>
+      </div>
+
+      <div class="commodity-grid">
+        <!-- Sugar -->
+        <div class="commodity-card fade-in">
+          <div class="commodity-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1559656914-a30970c1affd?w=800&q=80" alt="السكر">
+            <div class="commodity-icon">
+              <i class="fas fa-candy-cane"></i>
+            </div>
+          </div>
+          <div class="commodity-content">
+            <h3 class="commodity-title">السكر</h3>
+            <p class="commodity-description">سكر أبيض ومكرر بمعايير ICUMSA 45 من أفضل المنتجين في البرازيل وأمريكا اللاتينية</p>
+            <ul class="commodity-features">
+              <li><i class="fas fa-check-circle"></i> سكر أبيض ICUMSA 45</li>
+              <li><i class="fas fa-check-circle"></i> سكر بني وخام</li>
+              <li><i class="fas fa-check-circle"></i> شهادات ISO & HACCP</li>
+              <li><i class="fas fa-check-circle"></i> تعبئة 50 كجم أو سائبة</li>
+            </ul>
+            <a href="https://wa.me/966599343529?text=مرحباً%2C%20أرغب%20في%20الاستفسار%20عن%20السكر" target="_blank" class="learn-more">
+              اطلب عرض سعر
+              <i class="fab fa-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Rice -->
+        <div class="commodity-card fade-in">
+          <div class="commodity-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?w=800&q=80" alt="الأرز">
+            <div class="commodity-icon">
+              <i class="fas fa-seedling"></i>
+            </div>
+          </div>
+          <div class="commodity-content">
+            <h3 class="commodity-title">الأرز</h3>
+            <p class="commodity-description">أرز بسمتي وطويل الحبة من أفضل المصادر الآسيوية والأمريكية بجودة استثنائية</p>
+            <ul class="commodity-features">
+              <li><i class="fas fa-check-circle"></i> أرز بسمتي هندي</li>
+              <li><i class="fas fa-check-circle"></i> أرز تايلندي جاسمين</li>
+              <li><i class="fas fa-check-circle"></i> أرز أمريكي طويل الحبة</li>
+              <li><i class="fas fa-check-circle"></i> حبوب كاملة غير مكسرة</li>
+            </ul>
+            <a href="https://wa.me/966599343529?text=مرحباً%2C%20أرغب%20في%20الاستفسار%20عن%20الأرز" target="_blank" class="learn-more">
+              اطلب عرض سعر
+              <i class="fab fa-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Oils -->
+        <div class="commodity-card fade-in">
+          <div class="commodity-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=800&q=80" alt="الزيوت">
+            <div class="commodity-icon">
+              <i class="fas fa-oil-can"></i>
+            </div>
+          </div>
+          <div class="commodity-content">
+            <h3 class="commodity-title">الزيوت النباتية</h3>
+            <p class="commodity-description">زيوت نباتية صالحة للاستهلاك الآدمي والصناعي بمواصفات عالمية معتمدة</p>
+            <ul class="commodity-features">
+              <li><i class="fas fa-check-circle"></i> زيت عباد الشمس</li>
+              <li><i class="fas fa-check-circle"></i> زيت النخيل</li>
+              <li><i class="fas fa-check-circle"></i> زيت الصويا والذرة</li>
+              <li><i class="fas fa-check-circle"></i> مواصفات غذائية وصناعية</li>
+            </ul>
+            <a href="https://wa.me/966599343529?text=مرحباً%2C%20أرغب%20في%20الاستفسار%20عن%20الزيوت" target="_blank" class="learn-more">
+              اطلب عرض سعر
+              <i class="fab fa-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Fuel -->
+        <div class="commodity-card fade-in">
+          <div class="commodity-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1545262810-77515befe149?w=800&q=80" alt="الوقود">
+            <div class="commodity-icon">
+              <i class="fas fa-gas-pump"></i>
+            </div>
+          </div>
+          <div class="commodity-content">
+            <h3 class="commodity-title">الوقود والمشتقات النفطية</h3>
+            <p class="commodity-description">حلول طاقة متكاملة من الديزل والبنزين ووقود الطائرات بمواصفات دولية</p>
+            <ul class="commodity-features">
+              <li><i class="fas fa-check-circle"></i> ديزل D2 & EN590</li>
+              <li><i class="fas fa-check-circle"></i> وقود طائرات Jet A1</li>
+              <li><i class="fas fa-check-circle"></i> بنزين بمختلف الأوكتان</li>
+              <li><i class="fas fa-check-circle"></i> زيوت تشحيم صناعية</li>
+            </ul>
+            <a href="https://wa.me/966599343529?text=مرحباً%2C%20أرغب%20في%20الاستفسار%20عن%20الوقود" target="_blank" class="learn-more">
+              اطلب عرض سعر
+              <i class="fab fa-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Metals -->
+        <div class="commodity-card fade-in">
+          <div class="commodity-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1610557892470-55d9e80c0bce?w=800&q=80" alt="المعادن">
+            <div class="commodity-icon">
+              <i class="fas fa-industry"></i>
+            </div>
+          </div>
+          <div class="commodity-content">
+            <h3 class="commodity-title">المعادن والخردة</h3>
+            <p class="commodity-description">تجارة المعادن الخام والمعاد تدويرها بأعلى معايير الجودة والاستدامة</p>
+            <ul class="commodity-features">
+              <li><i class="fas fa-check-circle"></i> خردة حديد وصلب</li>
+              <li><i class="fas fa-check-circle"></i> ألومنيوم ونحاس</li>
+              <li><i class="fas fa-check-circle"></i> معادن نادرة وثمينة</li>
+              <li><i class="fas fa-check-circle"></i> شهادات منشأ معتمدة</li>
+            </ul>
+            <a href="https://wa.me/966599343529?text=مرحباً%2C%20أرغب%20في%20الاستفسار%20عن%20المعادن" target="_blank" class="learn-more">
+              اطلب عرض سعر
+              <i class="fab fa-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Grains -->
+        <div class="commodity-card fade-in">
+          <div class="commodity-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=800&q=80" alt="الحبوب">
+            <div class="commodity-icon">
+              <i class="fas fa-wheat-awn"></i>
+            </div>
+          </div>
+          <div class="commodity-content">
+            <h3 class="commodity-title">الحبوب والبقوليات</h3>
+            <p class="commodity-description">قمح وذرة وبقوليات من أجود المصادر العالمية للصناعات الغذائية</p>
+            <ul class="commodity-features">
+              <li><i class="fas fa-check-circle"></i> قمح صلب وطري</li>
+              <li><i class="fas fa-check-circle"></i> ذرة صفراء وبيضاء</li>
+              <li><i class="fas fa-check-circle"></i> فول صويا وبقوليات</li>
+              <li><i class="fas fa-check-circle"></i> صالح للاستهلاك والعلف</li>
+            </ul>
+            <a href="https://wa.me/966599343529?text=مرحباً%2C%20أرغب%20في%20الاستفسار%20عن%20الحبوب" target="_blank" class="learn-more">
+              اطلب عرض سعر
+              <i class="fab fa-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="why-choose" id="why">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-tag" style="background: linear-gradient(135deg, var(--accent), #FFE066);">لماذا نحن</span>
+        <h2 class="section-title">ما يميزنا عن الآخرين</h2>
+        <p class="section-subtitle">نقدم خدمات تجارية متكاملة بأعلى معايير الجودة والاحترافية</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card fade-in">
+          <div class="feature-icon">
+            <i class="fas fa-certificate"></i>
+          </div>
+          <h3>جودة معتمدة</h3>
+          <p>جميع منتجاتنا حاصلة على شهادات دولية من ISO و HACCP ومطابقة للمواصفات العالمية</p>
+        </div>
+
+        <div class="feature-card fade-in">
+          <div class="feature-icon">
+            <i class="fas fa-shipping-fast"></i>
+          </div>
+          <h3>توصيل سريع</h3>
+          <p>شبكة لوجستية متطورة تضمن توصيل طلباتك في الوقت المحدد لأي مكان في العالم</p>
+        </div>
+
+        <div class="feature-card fade-in">
+          <div class="feature-icon">
+            <i class="fas fa-hand-holding-usd"></i>
+          </div>
+          <h3>أسعار تنافسية</h3>
+          <p>علاقات مباشرة مع المنتجين تمكننا من تقديم أفضل الأسعار في السوق</p>
+        </div>
+
+        <div class="feature-card fade-in">
+          <div class="feature-icon">
+            <i class="fas fa-headset"></i>
+          </div>
+          <h3>دعم متواصل</h3>
+          <p>فريق خدمة عملاء محترف متاح على مدار الساعة لخدمتك والإجابة على استفساراتك</p>
+        </div>
+
+        <div class="feature-card fade-in">
+          <div class="feature-icon">
+            <i class="fas fa-globe-americas"></i>
+          </div>
+          <h3>تغطية عالمية</h3>
+          <p>شبكة موردين ممتدة في أكثر من 40 دولة حول العالم</p>
+        </div>
+
+        <div class="feature-card fade-in">
+          <div class="feature-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h3>موثوقية تامة</h3>
+          <p>سجل حافل من التعاملات الناجحة وثقة عملائنا على مدار سنوات</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section" id="contact">
+    <div class="container">
+      <div class="cta-box fade-in">
+        <h2>جاهز لبدء التعاون؟</h2>
+        <p>تواصل معنا اليوم واحصل على عرض سعر مخصص لاحتياجاتك التجارية</p>
+        <a href="https://wa.me/966599343529?text=مرحباً%2C%20أرغب%20في%20الاستفسار%20عن%20منتجاتكم" target="_blank" class="btn">
+          <i class="fab fa-whatsapp"></i>
+          تواصل معنا الآن
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>تجارة السلع العالمية</h3>
+        <p>شريكك الموثوق في استيراد وتصدير السلع الأساسية من وإلى جميع أنحاء العالم</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-section">
+        <h3>روابط سريعة</h3>
+        <ul>
+          <li><a href="#home">الرئيسية</a></li>
+          <li><a href="#commodities">المنتجات</a></li>
+          <li><a href="#why">لماذا نحن</a></li>
+          <li><a href="#contact">تواصل معنا</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>معلومات الاتصال</h3>
+        <ul>
+          <li><i class="fas fa-envelope"></i> <span dir="ltr">mabdulfattah@calx.sa</span></li>
+          <li><i class="fas fa-phone"></i> <span dir="ltr">+966 599 343 529</span></li>
+          <li><i class="fas fa-map-marker-alt"></i> المملكة العربية السعودية</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 تجارة السلع العالمية. جميع الحقوق محفوظة.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth Scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Fade In Animation on Scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-in').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Hide scroll indicator on scroll
+    window.addEventListener('scroll', () => {
+      const scrollIndicator = document.querySelector('.scroll-indicator');
+      if (window.scrollY > 100) {
+        scrollIndicator.style.opacity = '0';
+      } else {
+        scrollIndicator.style.opacity = '1';
+      }
+    });
+  </script>
+
+</body>
+</html>
